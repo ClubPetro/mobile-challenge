@@ -1,5 +1,8 @@
 import 'dart:ui';
 
+import 'package:challenge_pokemon/app/views/android/favorite/favorite.view.dart';
+import 'package:challenge_pokemon/app/views/android/list_pokemons/listpokemon.view.dart';
+import 'package:challenge_pokemon/app/views/android/search_result/search.view.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
@@ -9,6 +12,8 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   FocusNode fieldNode = FocusNode();
+  TextEditingController textEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,8 +142,9 @@ class _HomeViewState extends State<HomeView> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            height:
-                                MediaQuery.of(context).size.height * 0.1 * 0.68,
+                            height: MediaQuery.of(context).size.height *
+                                0.08 *
+                                0.68,
                           ),
                           Text(
                             "Conheça a Pokédex",
@@ -163,10 +169,11 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height *
-                                0.09 *
+                                0.08 *
                                 0.68,
                           ),
                           Container(
+                            height: 45,
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
@@ -177,6 +184,7 @@ class _HomeViewState extends State<HomeView> {
                               ],
                             ),
                             child: TextField(
+                              controller: textEditingController,
                               focusNode: fieldNode,
                               textCapitalization: TextCapitalization.words,
                               autofocus: false,
@@ -231,22 +239,39 @@ class _HomeViewState extends State<HomeView> {
                                 fontSize: 12,
                                 color: Color(0xFF4F4F4F),
                               ),
+                              onChanged: (val) {
+                                setState(() {});
+                              },
                             ),
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height *
-                                0.18 *
+                                0.15 *
                                 0.68,
                           ),
                           RaisedButton(
+                            onPressed: textEditingController.text.isEmpty
+                                ? null
+                                : () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => SearchView(
+                                          namePokemon:
+                                              textEditingController.text,
+                                        ),
+                                      ),
+                                    );
+                                  },
                             padding: EdgeInsets.all(0.0),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(45.0),
+                              borderRadius: BorderRadius.circular(20.0),
                             ),
                             child: Container(
                               height: 45,
                               decoration: BoxDecoration(
-                                  color: Color(0xFF02005B),
+                                  color: textEditingController.text.isEmpty
+                                      ? Color(0xFFBDBDBD)
+                                      : Color(0xFF02005B),
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(20),
                                   ),
@@ -272,13 +297,20 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height *
-                                0.07 *
+                                0.05 *
                                 0.68,
                           ),
                           RaisedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => FavoriteView(),
+                                ),
+                              );
+                            },
                             padding: EdgeInsets.all(0.0),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(45.0),
+                              borderRadius: BorderRadius.circular(20.0),
                             ),
                             child: Container(
                               height: 45,
@@ -297,6 +329,50 @@ class _HomeViewState extends State<HomeView> {
                               child: Center(
                                 child: Text(
                                   'VER FAVORITOS',
+                                  style: TextStyle(
+                                    color: Color(0xFF02005B),
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 14,
+                                    fontFamily: 'OpenSans',
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height *
+                                0.05 *
+                                0.68,
+                          ),
+                          RaisedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => ListPokemonView(),
+                                ),
+                              );
+                            },
+                            padding: EdgeInsets.all(0.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Container(
+                              height: 45,
+                              decoration: BoxDecoration(
+                                  color: Color(0xFF7AFC90),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.15),
+                                      blurRadius: 8,
+                                      offset: Offset(0, 5.0),
+                                    )
+                                  ]),
+                              child: Center(
+                                child: Text(
+                                  'LISTAR POKÉMONS',
                                   style: TextStyle(
                                     color: Color(0xFF02005B),
                                     fontWeight: FontWeight.w700,
