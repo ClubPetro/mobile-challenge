@@ -1,5 +1,7 @@
 import 'package:challenge_pokemon/app/models/allpokemonapi.model.dart';
 import 'package:challenge_pokemon/app/models/pokemonapi.model.dart';
+import 'package:challenge_pokemon/app/models/pokemonapievolutions.model.dart';
+import 'package:challenge_pokemon/app/models/pokemonapispecie.dart';
 import 'package:dio/dio.dart';
 
 class PokemonRepository {
@@ -40,5 +42,23 @@ class PokemonRepository {
 
   Future<List<PokemonAPIModel>> search(String term) async {
     return <PokemonAPIModel>[];
+  }
+
+  Future<PokemonAPISpecieModel> getPokemonSpecie(String url) async {
+    try {
+      Response response = await _dio.get(url);
+      return PokemonAPISpecieModel.fromJson(response.data);
+    } on DioError catch (e) {
+      throw (e.message);
+    }
+  }
+
+  Future<PokemonAPIEvolutionsModel> getPokemonEvolutions(String url) async {
+    try {
+      Response response = await _dio.get(url);
+      return PokemonAPIEvolutionsModel.fromJson(response.data);
+    } on DioError catch (e) {
+      throw (e.message);
+    }
   }
 }

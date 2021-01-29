@@ -15,23 +15,142 @@ class _ListPokemonViewState extends State<ListPokemonView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Color(0xFF02005B),
-        ),
-        title: Text(
-          "Lista de Pokémons",
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 18,
-            fontFamily: "OpenSans",
+      appBar: PreferredSize(
+        preferredSize:
+            Size.fromHeight(180 - MediaQuery.of(context).padding.top),
+        child: AppBar(
+          iconTheme: IconThemeData(
             color: Color(0xFF02005B),
           ),
+          title: Text(
+            "Lista de Pokémons",
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 18,
+              fontFamily: "OpenSans",
+              color: Color(0xFF02005B),
+            ),
+          ),
+          backgroundColor: Theme.of(context).accentColor,
+          flexibleSpace: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: 10,
+                        top: (160 -
+                            kToolbarHeight -
+                            MediaQuery.of(context).padding.top),
+                        bottom: 20),
+                    child: Column(
+                      children: [
+                        Observer(builder: (_) {
+                          if (controller.previous != null) {
+                            return RawMaterialButton(
+                              onPressed: () {
+                                controller.getPokemons(controller.previous);
+                              },
+                              elevation: 5.0,
+                              fillColor: Theme.of(context).primaryColor,
+                              child: Icon(
+                                Icons.arrow_back,
+                                size: 20.0,
+                                color: Theme.of(context).accentColor,
+                              ),
+                              padding: EdgeInsets.all(15.0),
+                              shape: CircleBorder(),
+                            );
+                          } else {
+                            return RawMaterialButton(
+                              onPressed: null,
+                              elevation: 5.0,
+                              fillColor: Colors.grey,
+                              child: Icon(
+                                Icons.arrow_back,
+                                size: 20.0,
+                                color: Theme.of(context).accentColor,
+                              ),
+                              padding: EdgeInsets.all(15.0),
+                              shape: CircleBorder(),
+                            );
+                          }
+                        }),
+                        Text(
+                          "Página anterior",
+                          style: TextStyle(
+                            fontFamily: "OpenSans",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFF02005B),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        right: 10,
+                        top: (160 -
+                            kToolbarHeight -
+                            MediaQuery.of(context).padding.top),
+                        bottom: 20),
+                    child: Column(
+                      children: [
+                        Observer(builder: (_) {
+                          if (controller.next != null) {
+                            return RawMaterialButton(
+                              onPressed: () {
+                                controller.getPokemons(controller.next);
+                              },
+                              elevation: 5.0,
+                              fillColor: Theme.of(context).primaryColor,
+                              child: Icon(
+                                Icons.arrow_forward,
+                                size: 20.0,
+                                color: Theme.of(context).accentColor,
+                              ),
+                              padding: EdgeInsets.all(15.0),
+                              shape: CircleBorder(),
+                            );
+                          } else {
+                            return RawMaterialButton(
+                              onPressed: null,
+                              elevation: 5.0,
+                              fillColor: Colors.grey,
+                              child: Icon(
+                                Icons.arrow_forward,
+                                size: 20.0,
+                                color: Theme.of(context).accentColor,
+                              ),
+                              padding: EdgeInsets.all(15.0),
+                              shape: CircleBorder(),
+                            );
+                          }
+                        }),
+                        Text(
+                          "Próxima Página",
+                          style: TextStyle(
+                            fontFamily: "OpenSans",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFF02005B),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
-        backgroundColor: Theme.of(context).accentColor,
       ),
       body: FutureBuilder(
-          future: controller.getPokemons(),
+          future: controller.getPokemons(null),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               if (snapshot.hasError) {
@@ -72,27 +191,29 @@ class _ListPokemonViewState extends State<ListPokemonView> {
                     );
                     if (controller.pokemons.isEmpty) {
                       return Center(
-                          child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            "Nenhum Item na Lista",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).primaryColor,
-                            ),
+                        child: ShaderMask(
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2.5,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                Theme.of(context).primaryColor),
                           ),
-                          Text(
-                            "Encotrado",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                          ),
-                        ],
-                      ));
+                          shaderCallback: (bounds) {
+                            return LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Theme.of(context).primaryColor,
+                                Theme.of(context).primaryColor,
+                              ],
+                              stops: [
+                                0.0,
+                                0.7,
+                              ],
+                            ).createShader(bounds);
+                          },
+                          blendMode: BlendMode.srcATop,
+                        ),
+                      );
                     } else {
                       return listView;
                     }

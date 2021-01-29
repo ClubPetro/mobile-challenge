@@ -1,4 +1,5 @@
 import 'package:challenge_pokemon/app/models/pokemonapi.model.dart';
+import 'package:challenge_pokemon/app/views/android/detail/detail.view.dart';
 import 'package:flutter/material.dart';
 
 class PokemonItemWidget extends StatefulWidget {
@@ -19,6 +20,10 @@ class _PokemonItemWidgetState extends State<PokemonItemWidget> {
 
   @override
   Widget build(BuildContext context) {
+    String types = capitalize(widget.model.types[0].type.name);
+    for (int i = 1; i < widget.model.types.length; i++) {
+      types += ", " + capitalize(widget.model.types[i].type.name);
+    }
     return ListTile(
       leading: SizedBox(
         width: 52,
@@ -47,7 +52,7 @@ class _PokemonItemWidgetState extends State<PokemonItemWidget> {
             color: Color(0xFFFD1A55)),
       ),
       subtitle: Text(
-        "Tipo: " + capitalize(widget.model.types[0].type.name),
+        "Tipo: " + types,
         style: TextStyle(
           fontFamily: "OpenSans",
           fontSize: 12,
@@ -61,7 +66,15 @@ class _PokemonItemWidgetState extends State<PokemonItemWidget> {
           color: Color(0xFFFD1A55),
           size: 30,
         ),
-        onPressed: null,
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailView(
+                model: widget.model,
+              ),
+            ),
+          );
+        },
       ),
     );
   }

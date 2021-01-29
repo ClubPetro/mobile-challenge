@@ -24,6 +24,51 @@ mixin _$PokemonController on _PokemonController, Store {
     });
   }
 
+  final _$previousAtom = Atom(name: '_PokemonController.previous');
+
+  @override
+  String get previous {
+    _$previousAtom.reportRead();
+    return super.previous;
+  }
+
+  @override
+  set previous(String value) {
+    _$previousAtom.reportWrite(value, super.previous, () {
+      super.previous = value;
+    });
+  }
+
+  final _$nextAtom = Atom(name: '_PokemonController.next');
+
+  @override
+  String get next {
+    _$nextAtom.reportRead();
+    return super.next;
+  }
+
+  @override
+  set next(String value) {
+    _$nextAtom.reportWrite(value, super.next, () {
+      super.next = value;
+    });
+  }
+
+  final _$favoriteAtom = Atom(name: '_PokemonController.favorite');
+
+  @override
+  bool get favorite {
+    _$favoriteAtom.reportRead();
+    return super.favorite;
+  }
+
+  @override
+  set favorite(bool value) {
+    _$favoriteAtom.reportWrite(value, super.favorite, () {
+      super.favorite = value;
+    });
+  }
+
   final _$searchAsyncAction = AsyncAction('_PokemonController.search');
 
   @override
@@ -35,22 +80,47 @@ mixin _$PokemonController on _PokemonController, Store {
       AsyncAction('_PokemonController.getPokemons');
 
   @override
-  Future<void> getPokemons() {
-    return _$getPokemonsAsyncAction.run(() => super.getPokemons());
+  Future<void> getPokemons(String link) {
+    return _$getPokemonsAsyncAction.run(() => super.getPokemons(link));
   }
 
-  final _$getPokemonsNextAsyncAction =
-      AsyncAction('_PokemonController.getPokemonsNext');
+  final _$getEvolutionsAsyncAction =
+      AsyncAction('_PokemonController.getEvolutions');
 
   @override
-  Future<void> getPokemonsNext(String link) {
-    return _$getPokemonsNextAsyncAction.run(() => super.getPokemonsNext(link));
+  Future<void> getEvolutions(String url) {
+    return _$getEvolutionsAsyncAction.run(() => super.getEvolutions(url));
+  }
+
+  final _$getFavoritesAsyncAction =
+      AsyncAction('_PokemonController.getFavorites');
+
+  @override
+  Future<void> getFavorites(String name) {
+    return _$getFavoritesAsyncAction.run(() => super.getFavorites(name));
+  }
+
+  final _$_PokemonControllerActionController =
+      ActionController(name: '_PokemonController');
+
+  @override
+  void toggleFavorite() {
+    final _$actionInfo = _$_PokemonControllerActionController.startAction(
+        name: '_PokemonController.toggleFavorite');
+    try {
+      return super.toggleFavorite();
+    } finally {
+      _$_PokemonControllerActionController.endAction(_$actionInfo);
+    }
   }
 
   @override
   String toString() {
     return '''
-pokemons: ${pokemons}
+pokemons: ${pokemons},
+previous: ${previous},
+next: ${next},
+favorite: ${favorite}
     ''';
   }
 }
