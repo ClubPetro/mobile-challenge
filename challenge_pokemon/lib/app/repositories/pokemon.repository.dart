@@ -40,10 +40,6 @@ class PokemonRepository {
     }
   }
 
-  Future<List<PokemonAPIModel>> search(String term) async {
-    return <PokemonAPIModel>[];
-  }
-
   Future<PokemonAPISpecieModel> getPokemonSpecie(String url) async {
     try {
       Response response = await _dio.get(url);
@@ -57,6 +53,17 @@ class PokemonRepository {
     try {
       Response response = await _dio.get(url);
       return PokemonAPIEvolutionsModel.fromJson(response.data);
+    } on DioError catch (e) {
+      throw (e.message);
+    }
+  }
+
+  Future<AllPokemonAPIModel> getAllPokemons() async {
+    try {
+      Response response;
+      response = await _dio
+          .get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=1118");
+      return AllPokemonAPIModel.fromJson(response.data);
     } on DioError catch (e) {
       throw (e.message);
     }

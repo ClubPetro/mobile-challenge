@@ -138,252 +138,259 @@ class _HomeViewState extends State<HomeView> {
                       padding: EdgeInsets.symmetric(
                           horizontal: MediaQuery.of(context).size.width * 0.05),
                       color: Colors.white,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height *
-                                0.08 *
-                                0.68,
-                          ),
-                          Text(
-                            "Conheça a Pokédex",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xFF02005B),
-                              fontSize: 22,
-                              fontFamily: 'OpenSans',
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height *
+                                  0.08 *
+                                  0.68,
                             ),
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "Utilize a pokédex para encontrar mais informações sobre os seus pokémons.",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w300,
-                              color: Color(0xFF02005B),
-                              fontSize: 16,
-                              fontFamily: 'OpenSans',
+                            Text(
+                              "Conheça a Pokédex",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: Color(0xFF02005B),
+                                fontSize: 22,
+                                fontFamily: 'OpenSans',
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height *
-                                0.08 *
-                                0.68,
-                          ),
-                          Container(
-                            height: 45,
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.15),
-                                  blurRadius: 8,
-                                  offset: Offset(0, 5),
-                                ),
-                              ],
+                            SizedBox(
+                              height: 8,
                             ),
-                            child: TextField(
-                              controller: textEditingController,
-                              focusNode: fieldNode,
-                              textCapitalization: TextCapitalization.words,
-                              autofocus: false,
-                              cursorColor: Color(0xFFBDBDBD),
-                              decoration: InputDecoration(
-                                isDense: true,
-                                fillColor: Colors.white,
-                                filled: true,
-                                border: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Color(0xFFBDBDBD)),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20.0),
+                            Text(
+                              "Utilize a pokédex para encontrar mais informações sobre os seus pokémons.",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w300,
+                                color: Color(0xFF02005B),
+                                fontSize: 16,
+                                fontFamily: 'OpenSans',
+                              ),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height *
+                                  0.08 *
+                                  0.68,
+                            ),
+                            Container(
+                              height: 45,
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.15),
+                                    blurRadius: 8,
+                                    offset: Offset(0, 5),
+                                  ),
+                                ],
+                              ),
+                              child: TextField(
+                                controller: textEditingController,
+                                focusNode: fieldNode,
+                                textCapitalization: TextCapitalization.words,
+                                autofocus: false,
+                                cursorColor: Color(0xFFBDBDBD),
+                                decoration: InputDecoration(
+                                  isDense: true,
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  border: OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Color(0xFFBDBDBD)),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20.0),
+                                    ),
+                                  ),
+                                  hintText: 'Digite o nome do pokémon...',
+                                  hintStyle: TextStyle(
+                                    fontFamily: 'OpenSans',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Color(0xFFBDBDBD),
+                                  ),
+                                  suffixIcon: Icon(
+                                    Icons.search,
+                                    color: fieldNode.hasFocus
+                                        ? Color(0xFF02005B)
+                                        : Color(0xFFBDBDBD),
+                                    size: 27,
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      width: 1,
+                                      color: Color(0xFFBDBDBD),
+                                    ),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20.0),
+                                    ),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      width: 1,
+                                      color: Color(0xFFBDBDBD),
+                                    ),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20.0),
+                                    ),
                                   ),
                                 ),
-                                hintText: 'Digite o nome do pokémon...',
-                                hintStyle: TextStyle(
+                                style: TextStyle(
                                   fontFamily: 'OpenSans',
                                   fontWeight: FontWeight.w400,
                                   fontSize: 12,
-                                  color: Color(0xFFBDBDBD),
+                                  color: Color(0xFF4F4F4F),
                                 ),
-                                suffixIcon: Icon(
-                                  Icons.search,
-                                  color: fieldNode.hasFocus
-                                      ? Color(0xFF02005B)
-                                      : Color(0xFFBDBDBD),
-                                  size: 27,
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    width: 1,
-                                    color: Color(0xFFBDBDBD),
-                                  ),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20.0),
-                                  ),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    width: 1,
-                                    color: Color(0xFFBDBDBD),
-                                  ),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20.0),
-                                  ),
-                                ),
+                                onChanged: (val) {
+                                  setState(() {});
+                                },
                               ),
-                              style: TextStyle(
-                                fontFamily: 'OpenSans',
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: Color(0xFF4F4F4F),
-                              ),
-                              onChanged: (val) {
-                                setState(() {});
-                              },
                             ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height *
-                                0.15 *
-                                0.68,
-                          ),
-                          RaisedButton(
-                            onPressed: textEditingController.text.isEmpty
-                                ? null
-                                : () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) => SearchView(
-                                          namePokemon:
-                                              textEditingController.text,
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height *
+                                  0.15 *
+                                  0.68,
+                            ),
+                            RaisedButton(
+                              onPressed: textEditingController.text.isEmpty
+                                  ? null
+                                  : () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => SearchView(
+                                            namePokemon:
+                                                textEditingController.text,
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                            padding: EdgeInsets.all(0.0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            child: Container(
-                              height: 45,
-                              decoration: BoxDecoration(
-                                  color: textEditingController.text.isEmpty
-                                      ? Color(0xFFBDBDBD)
-                                      : Color(0xFF02005B),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20),
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.15),
-                                      blurRadius: 8,
-                                      offset: Offset(0, 5.0),
-                                    )
-                                  ]),
-                              child: Center(
-                                child: Text(
-                                  'PESQUISAR',
-                                  style: TextStyle(
-                                    color: Theme.of(context).accentColor,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 14,
-                                    fontFamily: 'OpenSans',
+                                      );
+                                    },
+                              padding: EdgeInsets.all(0.0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              child: Container(
+                                height: 45,
+                                decoration: BoxDecoration(
+                                    color: textEditingController.text.isEmpty
+                                        ? Color(0xFFBDBDBD)
+                                        : Color(0xFF02005B),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.15),
+                                        blurRadius: 8,
+                                        offset: Offset(0, 5.0),
+                                      )
+                                    ]),
+                                child: Center(
+                                  child: Text(
+                                    'PESQUISAR',
+                                    style: TextStyle(
+                                      color: Theme.of(context).accentColor,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 14,
+                                      fontFamily: 'OpenSans',
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height *
-                                0.05 *
-                                0.68,
-                          ),
-                          RaisedButton(
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => FavoriteView(),
-                                ),
-                              );
-                            },
-                            padding: EdgeInsets.all(0.0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height *
+                                  0.05 *
+                                  0.68,
                             ),
-                            child: Container(
-                              height: 45,
-                              decoration: BoxDecoration(
-                                  color: Color(0xFFFFCB05),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20),
+                            RaisedButton(
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => FavoriteView(),
                                   ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.15),
-                                      blurRadius: 8,
-                                      offset: Offset(0, 5.0),
-                                    )
-                                  ]),
-                              child: Center(
-                                child: Text(
-                                  'VER FAVORITOS',
-                                  style: TextStyle(
-                                    color: Color(0xFF02005B),
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 14,
-                                    fontFamily: 'OpenSans',
+                                );
+                              },
+                              padding: EdgeInsets.all(0.0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              child: Container(
+                                height: 45,
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFFFCB05),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.15),
+                                        blurRadius: 8,
+                                        offset: Offset(0, 5.0),
+                                      )
+                                    ]),
+                                child: Center(
+                                  child: Text(
+                                    'VER FAVORITOS',
+                                    style: TextStyle(
+                                      color: Color(0xFF02005B),
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 14,
+                                      fontFamily: 'OpenSans',
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height *
-                                0.05 *
-                                0.68,
-                          ),
-                          RaisedButton(
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => ListPokemonView(),
-                                ),
-                              );
-                            },
-                            padding: EdgeInsets.all(0.0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20.0),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height *
+                                  0.05 *
+                                  0.68,
                             ),
-                            child: Container(
-                              height: 45,
-                              decoration: BoxDecoration(
-                                  color: Color(0xFF7AFC90),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20),
+                            RaisedButton(
+                              onPressed: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => ListPokemonView(),
                                   ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.15),
-                                      blurRadius: 8,
-                                      offset: Offset(0, 5.0),
-                                    )
-                                  ]),
-                              child: Center(
-                                child: Text(
-                                  'LISTAR POKÉMONS',
-                                  style: TextStyle(
-                                    color: Color(0xFF02005B),
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 14,
-                                    fontFamily: 'OpenSans',
+                                );
+                              },
+                              padding: EdgeInsets.all(0.0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              child: Container(
+                                height: 45,
+                                decoration: BoxDecoration(
+                                    color: Color(0xFF7AFC90),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.15),
+                                        blurRadius: 8,
+                                        offset: Offset(0, 5.0),
+                                      )
+                                    ]),
+                                child: Center(
+                                  child: Text(
+                                    'LISTAR POKÉMONS',
+                                    style: TextStyle(
+                                      color: Color(0xFF02005B),
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 14,
+                                      fontFamily: 'OpenSans',
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height *
+                                  0.05 *
+                                  0.68,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

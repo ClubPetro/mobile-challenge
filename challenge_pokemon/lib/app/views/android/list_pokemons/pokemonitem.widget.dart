@@ -1,12 +1,15 @@
+import 'package:challenge_pokemon/app/controllers/favorite.controller.dart';
 import 'package:challenge_pokemon/app/models/pokemonapi.model.dart';
 import 'package:challenge_pokemon/app/views/android/detail/detail.view.dart';
 import 'package:flutter/material.dart';
 
 class PokemonItemWidget extends StatefulWidget {
   final PokemonAPIModel model;
+  final FavoriteController controller;
 
   PokemonItemWidget({
     @required this.model,
+    this.controller,
   });
 
   @override
@@ -36,7 +39,7 @@ class _PokemonItemWidgetState extends State<PokemonItemWidget> {
             child: CircleAvatar(
               backgroundColor: Colors.white,
               backgroundImage: NetworkImage(
-                "${widget.model.sprites.frontDefault}",
+                "${widget.model.sprites.other.officialArtwork.frontDefault}",
                 scale: 1,
               ),
             ),
@@ -67,13 +70,29 @@ class _PokemonItemWidgetState extends State<PokemonItemWidget> {
           size: 30,
         ),
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => DetailView(
-                model: widget.model,
+          if (widget.controller == null) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => DetailView(
+                  model: widget.model,
+                ),
               ),
-            ),
-          );
+            );
+          } else {
+            Navigator.of(context)
+                .push(
+              MaterialPageRoute(
+                builder: (context) => DetailView(
+                  model: widget.model,
+                ),
+              ),
+            )
+                .then((value) {
+              if (!value) {
+                widget.controller.removeFavorite(widget.model.name);
+              }
+            });
+          }
         },
       ),
     );

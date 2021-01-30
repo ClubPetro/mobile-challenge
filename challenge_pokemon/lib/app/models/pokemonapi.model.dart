@@ -1,36 +1,35 @@
 class PokemonAPIModel {
-  int id;
-  String name;
   int height;
-  int weight;
+  int id;
   List<Moves> moves;
+  String name;
   Species species;
   Sprites sprites;
   List<Stats> stats;
   List<Types> types;
+  int weight;
 
   PokemonAPIModel(
-      {this.id,
-      this.name,
-      this.height,
-      this.weight,
+      {this.height,
+      this.id,
       this.moves,
+      this.name,
       this.species,
       this.sprites,
       this.stats,
-      this.types});
+      this.types,
+      this.weight});
 
   PokemonAPIModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
     height = json['height'];
-    weight = json['weight'];
+    id = json['id'];
     if (json['moves'] != null) {
       moves = new List<Moves>();
       json['moves'].forEach((v) {
         moves.add(new Moves.fromJson(v));
       });
     }
+    name = json['name'];
     species =
         json['species'] != null ? new Species.fromJson(json['species']) : null;
     sprites =
@@ -47,17 +46,17 @@ class PokemonAPIModel {
         types.add(new Types.fromJson(v));
       });
     }
+    weight = json['weight'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
     data['height'] = this.height;
-    data['weight'] = this.weight;
+    data['id'] = this.id;
     if (this.moves != null) {
       data['moves'] = this.moves.map((v) => v.toJson()).toList();
     }
+    data['name'] = this.name;
     if (this.species != null) {
       data['species'] = this.species.toJson();
     }
@@ -70,6 +69,7 @@ class PokemonAPIModel {
     if (this.types != null) {
       data['types'] = this.types.map((v) => v.toJson()).toList();
     }
+    data['weight'] = this.weight;
     return data;
   }
 }
@@ -125,11 +125,49 @@ class Species {
 }
 
 class Sprites {
-  String frontDefault;
+  Other other;
 
-  Sprites({this.frontDefault});
+  Sprites({this.other});
 
   Sprites.fromJson(Map<String, dynamic> json) {
+    other = json['other'] != null ? new Other.fromJson(json['other']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.other != null) {
+      data['other'] = this.other.toJson();
+    }
+    return data;
+  }
+}
+
+class Other {
+  OfficialArtwork officialArtwork;
+
+  Other({this.officialArtwork});
+
+  Other.fromJson(Map<String, dynamic> json) {
+    officialArtwork = json['official-artwork'] != null
+        ? new OfficialArtwork.fromJson(json['official-artwork'])
+        : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.officialArtwork != null) {
+      data['official-artwork'] = this.officialArtwork.toJson();
+    }
+    return data;
+  }
+}
+
+class OfficialArtwork {
+  String frontDefault;
+
+  OfficialArtwork({this.frontDefault});
+
+  OfficialArtwork.fromJson(Map<String, dynamic> json) {
     frontDefault = json['front_default'];
   }
 

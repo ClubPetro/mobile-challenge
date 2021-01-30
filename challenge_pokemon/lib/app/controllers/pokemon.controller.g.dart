@@ -69,13 +69,6 @@ mixin _$PokemonController on _PokemonController, Store {
     });
   }
 
-  final _$searchAsyncAction = AsyncAction('_PokemonController.search');
-
-  @override
-  Future<void> search(String term) {
-    return _$searchAsyncAction.run(() => super.search(term));
-  }
-
   final _$getPokemonsAsyncAction =
       AsyncAction('_PokemonController.getPokemons');
 

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:challenge_pokemon/app/controllers/pokemon.controller.dart';
 import 'package:challenge_pokemon/app/models/favorite.model.dart';
 import 'package:challenge_pokemon/app/models/pokemonapi.model.dart';
@@ -30,6 +31,7 @@ class _DetailViewState extends State<DetailView> {
       types += ", " + capitalize(widget.model.types[i].type.name);
     }
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(height * 0.26),
@@ -44,7 +46,7 @@ class _DetailViewState extends State<DetailView> {
               size: 40,
             ),
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(controller.favorite);
             },
           ),
           backgroundColor: Theme.of(context).primaryColor,
@@ -81,93 +83,101 @@ class _DetailViewState extends State<DetailView> {
                               if (controller.favorite) {
                                 _repository
                                     .delete(widget.model.name.toLowerCase());
+                                Timer timer =
+                                    Timer(Duration(milliseconds: 1500), () {
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pop();
+                                });
                                 showDialog(
-                                  context: context,
-                                  builder: (ctx) => Stack(children: [
-                                    Positioned(
-                                      top: height * 0.80,
-                                      left: (MediaQuery.of(context).size.width -
-                                              (MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.75)) *
-                                          0.25,
-                                      child: AlertDialog(
-                                        titlePadding: EdgeInsets.symmetric(
-                                            vertical: 2, horizontal: 0),
-                                        title: SizedBox(
-                                          height: height * 0.04,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.5,
-                                          child: Center(
-                                            child: Text(
-                                              'Pokémon Desfavoritado',
-                                              style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .accentColor,
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: "OpenSans",
-                                                fontSize: 14,
+                                    barrierColor: Colors.transparent,
+                                    context: context,
+                                    builder: (ctx) {
+                                      return Stack(children: [
+                                        Positioned(
+                                          top: height * 0.80,
+                                          right: width * 0.1,
+                                          left: width * 0.1,
+                                          child: AlertDialog(
+                                            elevation: 0,
+                                            titlePadding: EdgeInsets.symmetric(
+                                                vertical: 2, horizontal: 0),
+                                            title: SizedBox(
+                                              height: height * 0.04,
+                                              width: width * 0.5,
+                                              child: Center(
+                                                child: Text(
+                                                  'Pokémon Desfavoritado',
+                                                  style: TextStyle(
+                                                    color: Theme.of(context)
+                                                        .accentColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontFamily: "OpenSans",
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
                                               ),
                                             ),
+                                            backgroundColor: Color(0xFF333333)
+                                                .withOpacity(0.7),
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(30.0))),
                                           ),
                                         ),
-                                        backgroundColor:
-                                            Color(0xFF333333).withOpacity(0.7),
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(30.0))),
-                                      ),
-                                    ),
-                                  ]),
-                                );
+                                      ]);
+                                    }).then((value) {
+                                  timer?.cancel();
+                                  timer = null;
+                                });
                               } else {
                                 _repository.create(FavoriteModel(
                                     name: widget.model.name.toLowerCase()));
+                                Timer timer =
+                                    Timer(Duration(milliseconds: 1500), () {
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pop();
+                                });
                                 showDialog(
-                                  context: context,
-                                  builder: (ctx) => Stack(children: [
-                                    Positioned(
-                                      top: height * 0.80,
-                                      left: (MediaQuery.of(context).size.width -
-                                              (MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.75)) *
-                                          0.25,
-                                      child: AlertDialog(
-                                        titlePadding: EdgeInsets.symmetric(
-                                            vertical: 2, horizontal: 0),
-                                        title: SizedBox(
-                                          height: height * 0.04,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.5,
-                                          child: Center(
-                                            child: Text(
-                                              'Pokémon Favoritado',
-                                              style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .accentColor,
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: "OpenSans",
-                                                fontSize: 14,
+                                    barrierColor: Colors.transparent,
+                                    context: context,
+                                    builder: (ctx) {
+                                      return Stack(children: [
+                                        Positioned(
+                                          top: height * 0.80,
+                                          right: width * 0.1,
+                                          left: width * 0.1,
+                                          child: AlertDialog(
+                                            elevation: 0,
+                                            titlePadding: EdgeInsets.symmetric(
+                                                vertical: 2, horizontal: 0),
+                                            title: SizedBox(
+                                              height: height * 0.04,
+                                              width: width * 0.5,
+                                              child: Center(
+                                                child: Text(
+                                                  'Pokémon Favoritado',
+                                                  style: TextStyle(
+                                                    color: Theme.of(context)
+                                                        .accentColor,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontFamily: "OpenSans",
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
                                               ),
                                             ),
+                                            backgroundColor: Color(0xFF333333)
+                                                .withOpacity(0.7),
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(30.0))),
                                           ),
                                         ),
-                                        backgroundColor:
-                                            Color(0xFF333333).withOpacity(0.7),
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(30.0))),
-                                      ),
-                                    ),
-                                  ]),
-                                );
+                                      ]);
+                                    }).then((value) {
+                                  timer?.cancel();
+                                  timer = null;
+                                });
                               }
                               controller.toggleFavorite();
                             },
@@ -209,17 +219,17 @@ class _DetailViewState extends State<DetailView> {
                 child: Row(
                   children: [
                     SizedBox(
-                      width: height * 0.12,
-                      height: height * 0.12,
+                      width: height * 0.14,
+                      height: height * 0.14,
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
                         child: SizedBox(
-                          width: height * 0.11,
-                          height: height * 0.11,
+                          width: height * 0.13,
+                          height: height * 0.13,
                           child: CircleAvatar(
                             backgroundColor: Theme.of(context).primaryColor,
                             backgroundImage: NetworkImage(
-                              "${widget.model.sprites.frontDefault}",
+                              "${widget.model.sprites.other.officialArtwork.frontDefault}",
                               scale: 1,
                             ),
                           ),

@@ -23,13 +23,6 @@ abstract class _PokemonController with Store {
   List<String> typeEvolution;
 
   @action
-  Future<void> search(String term) async {
-    pokemons = ObservableList<PokemonAPIModel>();
-    var data = await repository.search(term);
-    pokemons.addAll(data);
-  }
-
-  @action
   Future<void> getPokemons(String link) async {
     pokemons = ObservableList<PokemonAPIModel>();
     var data = await repository.getPokemons(link);

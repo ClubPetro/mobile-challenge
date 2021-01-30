@@ -59,4 +59,17 @@ class FavoriteRepository {
       return;
     }
   }
+
+  Future<List<FavoriteModel>> getFavorites() async {
+    try {
+      final db = await _getDatabase();
+      final maps = await db.query(favoriteTableName, orderBy: "name");
+      return List.generate(maps.length, (i) {
+        return FavoriteModel.fromMap(maps[i]);
+      });
+    } catch (ex) {
+      print(ex);
+      return <FavoriteModel>[];
+    }
+  }
 }
