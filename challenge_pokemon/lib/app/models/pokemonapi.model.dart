@@ -125,16 +125,19 @@ class Species {
 }
 
 class Sprites {
+  String frontDefault;
   Other other;
 
-  Sprites({this.other});
+  Sprites({this.frontDefault, this.other});
 
   Sprites.fromJson(Map<String, dynamic> json) {
+    frontDefault = json['front_default'];
     other = json['other'] != null ? new Other.fromJson(json['other']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['front_default'] = this.frontDefault;
     if (this.other != null) {
       data['other'] = this.other.toJson();
     }

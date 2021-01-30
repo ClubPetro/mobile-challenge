@@ -38,10 +38,17 @@ class _PokemonItemWidgetState extends State<PokemonItemWidget> {
             height: 47,
             child: CircleAvatar(
               backgroundColor: Colors.white,
-              backgroundImage: NetworkImage(
-                "${widget.model.sprites.other.officialArtwork.frontDefault}",
-                scale: 1,
-              ),
+              backgroundImage: widget.model.sprites.frontDefault != null ||
+                      widget.model.sprites.other.officialArtwork.frontDefault !=
+                          null
+                  ? NetworkImage(
+                      widget.model.sprites.other.officialArtwork.frontDefault !=
+                              null
+                          ? "${widget.model.sprites.other.officialArtwork.frontDefault}"
+                          : "${widget.model.sprites.frontDefault}",
+                      scale: 1,
+                    )
+                  : null,
             ),
           ),
         ),
