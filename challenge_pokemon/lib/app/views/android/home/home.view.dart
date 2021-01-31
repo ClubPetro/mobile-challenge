@@ -1,4 +1,6 @@
 import 'dart:ui';
+import 'package:challenge_pokemon/app/models/history.model.dart';
+import 'package:challenge_pokemon/app/repositories/history.repository.dart';
 import 'package:challenge_pokemon/app/views/android/favorite/favorite.view.dart';
 import 'package:challenge_pokemon/app/views/android/list_pokemons/listpokemon.view.dart';
 import 'package:challenge_pokemon/app/views/android/search_result/search.view.dart';
@@ -11,6 +13,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final HistoryRepository repositoryHistory = HistoryRepository();
   FocusNode fieldNode = FocusNode();
   TextEditingController textEditingController = TextEditingController();
 
@@ -257,11 +260,37 @@ class _HomeViewState extends State<HomeView> {
                               onPressed: textEditingController.text.isEmpty
                                   ? null
                                   : () async {
+                                      FocusScope.of(context).unfocus();
+                                      var data = await repositoryHistory
+                                          .getHistories();
+                                      bool aux = true;
+                                      for (int i = 0; i < data.length; i++) {
+                                        if (data[i].history ==
+                                            textEditingController.text) {
+                                          await repositoryHistory
+                                              .delete(data[i].history);
+                                          await repositoryHistory.create(
+                                              HistoryModel(
+                                                  history: textEditingController
+                                                      .text));
+                                          aux = false;
+                                        }
+                                      }
+                                      if (aux) {
+                                        await repositoryHistory.create(
+                                            HistoryModel(
+                                                history: textEditingController
+                                                    .text));
+
+                                        if (data.length > 3) {
+                                          await repositoryHistory
+                                              .delete(data[0].history);
+                                        }
+                                      }
                                       if (MediaQuery.of(context)
                                               .viewInsets
                                               .bottom !=
                                           0) {
-                                        FocusScope.of(context).unfocus();
                                         await Future.delayed(
                                             Duration(milliseconds: 300));
                                       }
