@@ -71,7 +71,7 @@ class _SearchViewState extends State<SearchView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "Aconteceu Algo de ",
+                      "Aconteceu algo de inesperado.",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -79,7 +79,15 @@ class _SearchViewState extends State<SearchView> {
                       ),
                     ),
                     Text(
-                      "Inesperado",
+                      "Sem conexão com a internet",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    Text(
+                      "ou conexão lenta.",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -96,12 +104,13 @@ class _SearchViewState extends State<SearchView> {
                         color: Color(0xFF4F4F4F).withOpacity(0.05),
                         thickness: 3,
                       ),
-                      itemCount: controller.pokemons.length,
+                      itemCount: controller.pokemonsSearch.length,
                       itemBuilder: (ctx, i) {
-                        return PokemonItemWidget(model: controller.pokemons[i]);
+                        return PokemonItemWidget(
+                            model: controller.pokemonsSearch[i]);
                       },
                     );
-                    if (controller.pokemons.isEmpty) {
+                    if (controller.pokemonsSearch.isEmpty) {
                       return Center(
                           child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

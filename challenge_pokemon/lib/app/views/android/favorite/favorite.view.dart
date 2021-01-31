@@ -38,7 +38,7 @@ class _FavoriteViewState extends State<FavoriteView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "Aconteceu Algo de ",
+                      "Aconteceu algo de inesperado.",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -46,7 +46,15 @@ class _FavoriteViewState extends State<FavoriteView> {
                       ),
                     ),
                     Text(
-                      "Inesperado",
+                      "Sem conexão com a internet",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    Text(
+                      "ou conexão lenta.",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

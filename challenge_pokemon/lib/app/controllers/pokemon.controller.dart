@@ -11,7 +11,7 @@ abstract class _PokemonController with Store {
   final FavoriteRepository repositoryFavorite = FavoriteRepository();
 
   @observable
-  ObservableList<PokemonAPIModel> pokemons;
+  ObservableList<PokemonAPIModel> pokemons = ObservableList<PokemonAPIModel>();
   @observable
   String previous;
   @observable

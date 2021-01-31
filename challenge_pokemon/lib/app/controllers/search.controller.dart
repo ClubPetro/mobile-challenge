@@ -9,17 +9,18 @@ abstract class _SearchController with Store {
   final PokemonRepository repository = PokemonRepository();
 
   @observable
-  ObservableList<PokemonAPIModel> pokemons;
+  ObservableList<PokemonAPIModel> pokemonsSearch =
+      ObservableList<PokemonAPIModel>();
 
   @action
   Future<void> search(String term) async {
-    pokemons = ObservableList<PokemonAPIModel>();
+    pokemonsSearch.clear();
     var data = await repository.getAllPokemons();
     for (int i = 0; i < data.results.length; i++) {
       if (term.toLowerCase().contains(data.results[i].name) ||
           data.results[i].name.contains(term.toLowerCase())) {
         var data2 = await repository.getPokemon(data.results[i].name);
-        pokemons.add(data2);
+        pokemonsSearch.add(data2);
       }
     }
   }

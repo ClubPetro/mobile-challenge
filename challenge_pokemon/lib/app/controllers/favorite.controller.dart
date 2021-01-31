@@ -11,7 +11,7 @@ abstract class _FavoriteController with Store {
   final FavoriteRepository repositoryFavorite = FavoriteRepository();
 
   @observable
-  ObservableList<PokemonAPIModel> pokemons;
+  ObservableList<PokemonAPIModel> pokemons = ObservableList<PokemonAPIModel>();
 
   @action
   Future<void> getPokemonsFavorites() async {

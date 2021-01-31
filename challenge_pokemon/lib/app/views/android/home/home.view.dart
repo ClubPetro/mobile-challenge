@@ -1,9 +1,9 @@
 import 'dart:ui';
-
 import 'package:challenge_pokemon/app/views/android/favorite/favorite.view.dart';
 import 'package:challenge_pokemon/app/views/android/list_pokemons/listpokemon.view.dart';
 import 'package:challenge_pokemon/app/views/android/search_result/search.view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -187,8 +187,9 @@ class _HomeViewState extends State<HomeView> {
                               child: TextField(
                                 controller: textEditingController,
                                 focusNode: fieldNode,
+                                autocorrect: false,
+                                enableSuggestions: false,
                                 textCapitalization: TextCapitalization.words,
-                                autofocus: false,
                                 cursorColor: Color(0xFFBDBDBD),
                                 decoration: InputDecoration(
                                   isDense: true,
@@ -241,7 +242,9 @@ class _HomeViewState extends State<HomeView> {
                                   color: Color(0xFF4F4F4F),
                                 ),
                                 onChanged: (val) {
-                                  setState(() {});
+                                  if (val.length == 0 || val.length == 1) {
+                                    setState(() {});
+                                  }
                                 },
                               ),
                             ),
@@ -253,15 +256,28 @@ class _HomeViewState extends State<HomeView> {
                             RaisedButton(
                               onPressed: textEditingController.text.isEmpty
                                   ? null
-                                  : () {
-                                      Navigator.of(context).push(
+                                  : () async {
+                                      if (MediaQuery.of(context)
+                                              .viewInsets
+                                              .bottom !=
+                                          0) {
+                                        FocusScope.of(context).unfocus();
+                                        await Future.delayed(
+                                            Duration(milliseconds: 300));
+                                      }
+                                      Navigator.of(context)
+                                          .push(
                                         MaterialPageRoute(
                                           builder: (context) => SearchView(
                                             namePokemon:
                                                 textEditingController.text,
                                           ),
                                         ),
-                                      );
+                                      )
+                                          .then((value) {
+                                        setState(() {});
+                                        textEditingController.text = "";
+                                      });
                                     },
                               padding: EdgeInsets.all(0.0),
                               shape: RoundedRectangleBorder(
@@ -302,12 +318,23 @@ class _HomeViewState extends State<HomeView> {
                                   0.68,
                             ),
                             RaisedButton(
-                              onPressed: () {
-                                Navigator.of(context).push(
+                              onPressed: () async {
+                                if (MediaQuery.of(context).viewInsets.bottom !=
+                                    0) {
+                                  FocusScope.of(context).unfocus();
+                                  await Future.delayed(
+                                      Duration(milliseconds: 300));
+                                }
+                                Navigator.of(context)
+                                    .push(
                                   MaterialPageRoute(
                                     builder: (context) => FavoriteView(),
                                   ),
-                                );
+                                )
+                                    .then((value) {
+                                  setState(() {});
+                                  textEditingController.text = "";
+                                });
                               },
                               padding: EdgeInsets.all(0.0),
                               shape: RoundedRectangleBorder(
@@ -346,12 +373,23 @@ class _HomeViewState extends State<HomeView> {
                                   0.68,
                             ),
                             RaisedButton(
-                              onPressed: () {
-                                Navigator.of(context).push(
+                              onPressed: () async {
+                                if (MediaQuery.of(context).viewInsets.bottom !=
+                                    0) {
+                                  FocusScope.of(context).unfocus();
+                                  await Future.delayed(
+                                      Duration(milliseconds: 300));
+                                }
+                                Navigator.of(context)
+                                    .push(
                                   MaterialPageRoute(
                                     builder: (context) => ListPokemonView(),
                                   ),
-                                );
+                                )
+                                    .then((value) {
+                                  setState(() {});
+                                  textEditingController.text = "";
+                                });
                               },
                               padding: EdgeInsets.all(0.0),
                               shape: RoundedRectangleBorder(

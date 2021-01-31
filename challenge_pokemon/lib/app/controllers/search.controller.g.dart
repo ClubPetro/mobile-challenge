@@ -9,18 +9,18 @@ part of 'search.controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$SearchController on _SearchController, Store {
-  final _$pokemonsAtom = Atom(name: '_SearchController.pokemons');
+  final _$pokemonsSearchAtom = Atom(name: '_SearchController.pokemonsSearch');
 
   @override
-  ObservableList<PokemonAPIModel> get pokemons {
-    _$pokemonsAtom.reportRead();
-    return super.pokemons;
+  ObservableList<PokemonAPIModel> get pokemonsSearch {
+    _$pokemonsSearchAtom.reportRead();
+    return super.pokemonsSearch;
   }
 
   @override
-  set pokemons(ObservableList<PokemonAPIModel> value) {
-    _$pokemonsAtom.reportWrite(value, super.pokemons, () {
-      super.pokemons = value;
+  set pokemonsSearch(ObservableList<PokemonAPIModel> value) {
+    _$pokemonsSearchAtom.reportWrite(value, super.pokemonsSearch, () {
+      super.pokemonsSearch = value;
     });
   }
 
@@ -34,7 +34,7 @@ mixin _$SearchController on _SearchController, Store {
   @override
   String toString() {
     return '''
-pokemons: ${pokemons}
+pokemonsSearch: ${pokemonsSearch}
     ''';
   }
 }
