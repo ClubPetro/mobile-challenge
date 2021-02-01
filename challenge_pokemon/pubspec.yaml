@@ -37,10 +37,16 @@ dependencies:
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.8.0"
   flutter_test:
     sdk: flutter
   build_runner:
   mobx_codegen:
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/pokeball.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -74,13 +80,8 @@ flutter:
       fonts:
         - asset: assets/fonts/OpenSans-Regular.ttf
         - asset: assets/fonts/OpenSans-Bold.ttf
-        - asset: assets/fonts/OpenSans-BoldItalic.ttf
-        - asset: assets/fonts/OpenSans-ExtraBold.ttf
-        - asset: assets/fonts/OpenSans-Italic.ttf
         - asset: assets/fonts/OpenSans-Light.ttf
-        - asset: assets/fonts/OpenSans-LightItalic.ttf
         - asset: assets/fonts/OpenSans-SemiBold.ttf
-        - asset: assets/fonts/OpenSans-SemiBoldItalic.ttf
 
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic

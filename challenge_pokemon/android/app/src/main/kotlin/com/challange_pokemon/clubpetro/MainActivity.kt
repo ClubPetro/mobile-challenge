@@ -1,4 +1,4 @@
-package com.example.challange_pokemon
+package com.challange_pokemon.clubpetro
 
 import io.flutter.embedding.android.FlutterActivity
 

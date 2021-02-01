@@ -1,8 +1,7 @@
 import 'package:challenge_pokemon/app/controllers/pokemon.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-
-import 'pokemonitem.widget.dart';
+import '../common_widgets/pokemonitem.widget.dart';
 
 class ListPokemonView extends StatefulWidget {
   @override

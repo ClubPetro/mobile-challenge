@@ -1,4 +1,5 @@
 import 'package:challenge_pokemon/app/models/pokemonapi.model.dart';
+import 'package:challenge_pokemon/app/models/pokemonapievolutions.model.dart';
 import 'package:challenge_pokemon/app/repositories/favorite.repository.dart';
 import 'package:challenge_pokemon/app/repositories/pokemon.repository.dart';
 import 'package:mobx/mobx.dart';
@@ -7,17 +8,20 @@ part 'pokemon.controller.g.dart';
 class PokemonController = _PokemonController with _$PokemonController;
 
 abstract class _PokemonController with Store {
-  final PokemonRepository repository = PokemonRepository();
+  final PokemonRepository repositoryPokemon = PokemonRepository();
   final FavoriteRepository repositoryFavorite = FavoriteRepository();
 
   @observable
-  ObservableList<PokemonAPIModel> pokemons = ObservableList<PokemonAPIModel>();
-  @observable
-  String previous;
-  @observable
-  String next;
+  ObservableList<PokemonAPIModel> pokemons;
+
   @observable
   bool favorite;
+
+  @observable
+  String previous;
+
+  @observable
+  String next;
 
   List<String> evolucoes;
   List<String> typeEvolution;
@@ -25,11 +29,11 @@ abstract class _PokemonController with Store {
   @action
   Future<void> getPokemons(String link) async {
     pokemons = ObservableList<PokemonAPIModel>();
-    var data = await repository.getPokemons(link);
+    var data = await repositoryPokemon.getPokemons(link);
     previous = data.previous;
     next = data.next;
     for (int i = 0; i < data.results.length; i++) {
-      var data2 = await repository.getPokemon(data.results[i].name);
+      var data2 = await repositoryPokemon.getPokemon(data.results[i].name);
       pokemons.add(data2);
     }
   }
@@ -37,61 +41,33 @@ abstract class _PokemonController with Store {
   @action
   Future<void> getEvolutions(String url) async {
     evolucoes = List<String>();
-    var data = await repository.getPokemonSpecie(url);
-    var dataAux =
-        await repository.getPokemonEvolutions(data.evolutionChain.url);
-    evolucoes.add(dataAux.chain.species.name);
-    if (dataAux.chain.evolvesTo.isNotEmpty) {
-      for (int i = 0; i < dataAux.chain.evolvesTo.length; i++) {
-        evolucoes.add(dataAux.chain.evolvesTo.elementAt(i).species.name);
-        if (dataAux.chain.evolvesTo.elementAt(i).evolvesTo.isNotEmpty) {
-          for (int j = 0;
-              j < dataAux.chain.evolvesTo.elementAt(i).evolvesTo.length;
-              j++) {
-            evolucoes.add(dataAux.chain.evolvesTo
-                .elementAt(i)
-                .evolvesTo
-                .elementAt(j)
-                .species
-                .name);
-            if (dataAux.chain.evolvesTo
-                .elementAt(i)
-                .evolvesTo
-                .elementAt(j)
-                .evolvesTo
-                .isNotEmpty) {
-              for (int k = 0;
-                  k <
-                      dataAux.chain.evolvesTo
-                          .elementAt(i)
-                          .evolvesTo
-                          .elementAt(j)
-                          .evolvesTo
-                          .length;
-                  k++) {
-                evolucoes.add(dataAux.chain.evolvesTo
-                    .elementAt(i)
-                    .evolvesTo
-                    .elementAt(j)
-                    .evolvesTo
-                    .elementAt(k)
-                    .species
-                    .name);
-              }
-            }
-          }
-        }
-      }
-    }
+    var speciePokemon = await repositoryPokemon.getPokemonSpecie(url);
+    var evolutionPokemon = await repositoryPokemon
+        .getPokemonEvolutions(speciePokemon.evolutionChain.url);
+    evolucoes.add(evolutionPokemon.chain.species.name);
+    recursiveEvolution(evolutionPokemon.chain.evolvesTo);
+
     typeEvolution = List<String>();
     for (int i = 0; i < evolucoes.length; i++) {
-      var data = await repository.getPokemon(evolucoes.elementAt(i));
-      String types = "(" + capitalize(data.types[0].type.name);
-      for (int j = 1; j < data.types.length; j++) {
-        types += " / " + capitalize(data.types[j].type.name);
+      var specificPokemon =
+          await repositoryPokemon.getPokemon(evolucoes.elementAt(i));
+      String types = "(" + capitalize(specificPokemon.types[0].type.name);
+      for (int j = 1; j < specificPokemon.types.length; j++) {
+        types += " / " + capitalize(specificPokemon.types[j].type.name);
       }
       types += ")";
       typeEvolution.add(types);
+    }
+  }
+
+  void recursiveEvolution(List<EvolvesTo> evolvesTo) {
+    if (evolvesTo.isEmpty) {
+      return null;
+    } else {
+      for (int i = 0; i < evolvesTo.length; i++) {
+        evolucoes.add(evolvesTo.elementAt(i).species.name);
+        recursiveEvolution(evolvesTo.elementAt(i).evolvesTo);
+      }
     }
   }
 

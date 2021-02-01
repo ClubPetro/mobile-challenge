@@ -12,6 +12,7 @@ class FavoriteRepository {
       },
       onCreate: (db, version) {
         db.execute(createFavoriteTableScript);
+        db.execute(createHistoryTableScript);
       },
       version: 1,
     );

@@ -305,6 +305,7 @@ class _HomeViewState extends State<HomeView> {
                                       )
                                           .then((value) {
                                         setState(() {});
+                                        FocusScope.of(context).unfocus();
                                         textEditingController.text = "";
                                       });
                                     },
@@ -362,6 +363,7 @@ class _HomeViewState extends State<HomeView> {
                                 )
                                     .then((value) {
                                   setState(() {});
+                                  FocusScope.of(context).unfocus();
                                   textEditingController.text = "";
                                 });
                               },
@@ -417,6 +419,7 @@ class _HomeViewState extends State<HomeView> {
                                 )
                                     .then((value) {
                                   setState(() {});
+                                  FocusScope.of(context).unfocus();
                                   textEditingController.text = "";
                                 });
                               },

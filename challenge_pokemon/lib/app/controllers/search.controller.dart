@@ -8,22 +8,21 @@ part 'search.controller.g.dart';
 class SearchController = _SearchController with _$SearchController;
 
 abstract class _SearchController with Store {
-  final PokemonRepository repository = PokemonRepository();
+  final PokemonRepository repositoryPokemon = PokemonRepository();
   final HistoryRepository repositoryHistory = HistoryRepository();
 
   @observable
-  ObservableList<PokemonAPIModel> pokemonsSearch =
-      ObservableList<PokemonAPIModel>();
+  ObservableList<PokemonAPIModel> pokemonsSearch;
 
   @observable
   bool showSearch = false;
 
   @observable
-  ObservableList<HistoryModel> histories = ObservableList<HistoryModel>();
+  ObservableList<HistoryModel> histories;
 
   @action
   Future<void> getHistories() async {
-    histories.clear();
+    histories = ObservableList<HistoryModel>();
     var data = await repositoryHistory.getHistories();
     histories.addAll(data);
   }
@@ -36,12 +35,14 @@ abstract class _SearchController with Store {
   @action
   Future<void> search(String term) async {
     pokemonsSearch = ObservableList<PokemonAPIModel>();
-    var data = await repository.getAllPokemons();
-    for (int i = 0; i < data.results.length; i++) {
-      if (term.toLowerCase().contains(data.results[i].name) ||
-          data.results[i].name.contains(term.toLowerCase())) {
-        var data2 = await repository.getPokemon(data.results[i].name);
-        pokemonsSearch.add(data2);
+    var allPokemons = await repositoryPokemon.getAllPokemons();
+    term = term.toLowerCase();
+    for (int i = 0; i < allPokemons.results.length; i++) {
+      if (term.contains(allPokemons.results[i].name) ||
+          allPokemons.results[i].name.contains(term)) {
+        var specificPokemon =
+            await repositoryPokemon.getPokemon(allPokemons.results[i].name);
+        pokemonsSearch.add(specificPokemon);
       }
     }
   }

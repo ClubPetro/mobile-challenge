@@ -1,7 +1,7 @@
 import 'package:challenge_pokemon/app/controllers/search.controller.dart';
 import 'package:challenge_pokemon/app/models/history.model.dart';
 import 'package:challenge_pokemon/app/repositories/history.repository.dart';
-import 'package:challenge_pokemon/app/views/android/list_pokemons/pokemonitem.widget.dart';
+import 'package:challenge_pokemon/app/views/android/common_widgets/pokemonitem.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 

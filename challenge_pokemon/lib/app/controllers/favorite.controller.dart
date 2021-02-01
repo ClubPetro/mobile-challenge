@@ -7,22 +7,23 @@ part 'favorite.controller.g.dart';
 class FavoriteController = _FavoriteController with _$FavoriteController;
 
 abstract class _FavoriteController with Store {
-  final PokemonRepository repository = PokemonRepository();
+  final PokemonRepository repositoryPokemon = PokemonRepository();
   final FavoriteRepository repositoryFavorite = FavoriteRepository();
 
   @observable
-  ObservableList<PokemonAPIModel> pokemons = ObservableList<PokemonAPIModel>();
+  ObservableList<PokemonAPIModel> pokemons;
 
   @action
   Future<void> getPokemonsFavorites() async {
     pokemons = ObservableList<PokemonAPIModel>();
-    var data = await repositoryFavorite.getFavorites();
-    var data2 = await repository.getAllPokemons();
-    for (int i = 0; i < data.length; i++) {
-      for (int j = 0; j < data2.results.length; j++) {
-        if (data[i].name == data2.results[j].name) {
-          var data3 = await repository.getPokemon(data[i].name);
-          pokemons.add(data3);
+    var favoritesPokemons = await repositoryFavorite.getFavorites();
+    var allPokemons = await repositoryPokemon.getAllPokemons();
+    for (int i = 0; i < favoritesPokemons.length; i++) {
+      for (int j = 0; j < allPokemons.results.length; j++) {
+        if (favoritesPokemons[i].name == allPokemons.results[j].name) {
+          var specificPokemon =
+              await repositoryPokemon.getPokemon(favoritesPokemons[i].name);
+          pokemons.add(specificPokemon);
           break;
         }
       }

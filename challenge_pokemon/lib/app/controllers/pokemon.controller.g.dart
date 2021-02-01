@@ -24,6 +24,21 @@ mixin _$PokemonController on _PokemonController, Store {
     });
   }
 
+  final _$favoriteAtom = Atom(name: '_PokemonController.favorite');
+
+  @override
+  bool get favorite {
+    _$favoriteAtom.reportRead();
+    return super.favorite;
+  }
+
+  @override
+  set favorite(bool value) {
+    _$favoriteAtom.reportWrite(value, super.favorite, () {
+      super.favorite = value;
+    });
+  }
+
   final _$previousAtom = Atom(name: '_PokemonController.previous');
 
   @override
@@ -51,21 +66,6 @@ mixin _$PokemonController on _PokemonController, Store {
   set next(String value) {
     _$nextAtom.reportWrite(value, super.next, () {
       super.next = value;
-    });
-  }
-
-  final _$favoriteAtom = Atom(name: '_PokemonController.favorite');
-
-  @override
-  bool get favorite {
-    _$favoriteAtom.reportRead();
-    return super.favorite;
-  }
-
-  @override
-  set favorite(bool value) {
-    _$favoriteAtom.reportWrite(value, super.favorite, () {
-      super.favorite = value;
     });
   }
 
@@ -111,9 +111,9 @@ mixin _$PokemonController on _PokemonController, Store {
   String toString() {
     return '''
 pokemons: ${pokemons},
+favorite: ${favorite},
 previous: ${previous},
-next: ${next},
-favorite: ${favorite}
+next: ${next}
     ''';
   }
 }
