@@ -29,3 +29,10 @@ Projeto Flutter desenvolvido para testar minhas habilidades, concorrendo a vaga 
 - [x] Screen Splash.
 
 ## Sobre a arquitetura utilizada
+
+Foi utilizado a arquitetura MVC, utilizando repositories.
+
+## Observação
+
+O desenvolvimento foi dividido para Android e iOS com o intuito de preservar o ambiente do usuário em seu sistema operacional.
+Porém, devido a impossibilidade de testes em ambientes iOS (pois, não possuo um mac e um iOS para testes), não consigo confirmar se está 100% fiel ao layout seguido como base do [Figma](https://www.figma.com/file/W6jWGGCGz3qhun7TxTrVn4/Teste_pokemon?node-id=13%3A427).
