@@ -1,16 +1,31 @@
-# challange_pokemon
+# Desafio Mobile - ClubPetro
 
-A new Flutter project.
+Projeto Flutter desenvolvido para testar minhas habilidades, concorrendo a vaga de desenvolvedor mobile da ClubPetro.
 
-## Getting Started
+## CheckList do que foi desenvolvido
 
-This project is a starting point for a Flutter application.
+#### Requisitos do Desafio
 
-A few resources to get you started if this is your first Flutter project:
+- [x] Uma tela para realizar a pesquisa;
+- [x] Uma tela para exibir os resultados da pesquisa;
+- [x] Uma tela para exibir as caracteriscas dos pokémon.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+#### Requisitos Obrigatórios
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [x] O Sistema foi desenvolvido utilizando o framework [Flutter](https://flutter.dev/);
+- [x] O Layout utilizado foi seguido como base no [Figma](https://www.figma.com/file/W6jWGGCGz3qhun7TxTrVn4/Teste_pokemon?node-id=13%3A427);
+- [x] Para gerenciamento de estado foi utilizado o MobX;
+- [x] O Aplicativo foi integrado à API [PokéAPI](https://pokeapi.co/) para a listagem dos pokémon.
+
+#### Bônus
+
+- [x] Exibir uma tela com a lista de todos os pokémon, fazendo uso de paginação para a construção da lista;
+- [x] Incluir uma forma de favoritar o pokémon pesquisado;
+- [x] Exibir caracteristicas além das pedidas (Altura);
+
+#### Extra Bônus
+
+- [x] Deploy realizado. [Pokémon Challenge ClubPetro]();
+- [x] Screen Splash.
+
+## Sobre a arquitetura utilizada
