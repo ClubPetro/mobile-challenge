@@ -6,9 +6,9 @@ Projeto Flutter desenvolvido para testar minhas habilidades, concorrendo a vaga 
 
 #### Requisitos do Desafio
 
-- [x] Uma tela para realizar a pesquisa;
-- [x] Uma tela para exibir os resultados da pesquisa;
-- [x] Uma tela para exibir as caracteriscas dos pokémon.
+- [X] Uma tela para realizar a pesquisa;
+- [X] Uma tela para exibir os resultados da pesquisa;
+- [X] Uma tela para exibir as caracteriscas dos pokémon.
 
 #### Requisitos Obrigatórios
 
