@@ -25,7 +25,7 @@ Projeto Flutter desenvolvido para testar minhas habilidades, concorrendo a vaga 
 
 #### Extra Bônus
 
-- [x] Deploy realizado. [Pokémon Challenge ClubPetro]();
+- [x] Deploy realizado, link: [Pokémon Challenge ClubPetro]().
 - [x] Screen Splash.
 
 ## Sobre a arquitetura utilizada
