@@ -30,7 +30,7 @@ Projeto Flutter desenvolvido para testar minhas habilidades, concorrendo a vaga 
 
 ## Sobre a arquitetura utilizada
 
-Foi utilizado a arquitetura MVC, utilizando repositories.
+Foi utilizado a arquitetura MVC, com repositories.
 
 ## Observação
 
