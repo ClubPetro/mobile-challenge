@@ -1,16 +1,38 @@
-# challange_pokemon
+# Desafio Mobile - ClubPetro
 
-A new Flutter project.
+Projeto Flutter desenvolvido para testar minhas habilidades, concorrendo a vaga de desenvolvedor mobile da ClubPetro.
 
-## Getting Started
+## CheckList do que foi desenvolvido
 
-This project is a starting point for a Flutter application.
+#### Requisitos do Desafio
 
-A few resources to get you started if this is your first Flutter project:
+- [X] Uma tela para realizar a pesquisa;
+- [X] Uma tela para exibir os resultados da pesquisa;
+- [X] Uma tela para exibir as caracteriscas dos pokémon.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+#### Requisitos Obrigatórios
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [x] O Sistema foi desenvolvido utilizando o framework [Flutter](https://flutter.dev/);
+- [x] O Layout utilizado foi seguido como base no [Figma](https://www.figma.com/file/W6jWGGCGz3qhun7TxTrVn4/Teste_pokemon?node-id=13%3A427);
+- [x] Para gerenciamento de estado foi utilizado o MobX;
+- [x] O Aplicativo foi integrado à API [PokéAPI](https://pokeapi.co/) para a listagem dos pokémon.
+
+#### Bônus
+
+- [x] Foi Exibido uma tela com a lista de todos os pokémon, fazendo uso de paginação para a construção da lista;
+- [x] Foi Incluido uma forma de favoritar o pokémon pesquisado;
+- [x] Foi Exibido caracteristicas além das pedidas (Altura);
+
+#### Extra Bônus
+
+- [x] Deploy realizado, link: [Pokémon Challenge ClubPetro]().
+- [x] Screen Splash.
+
+## Sobre a arquitetura utilizada
+
+Foi utilizado a arquitetura MVC, utilizando repositories.
+
+## Observação
+
+O desenvolvimento foi dividido para Android e iOS com o intuito de preservar o ambiente do usuário em seu sistema operacional.
+Porém, devido a impossibilidade de testes em ambientes iOS (pois, não possuo um mac e um iOS para testes), não consigo afirmar se o layout para iOS está 100% fiel ao [Figma](https://www.figma.com/file/W6jWGGCGz3qhun7TxTrVn4/Teste_pokemon?node-id=13%3A427).
