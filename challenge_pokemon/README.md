@@ -19,9 +19,9 @@ Projeto Flutter desenvolvido para testar minhas habilidades, concorrendo a vaga 
 
 #### Bônus
 
-- [x] Exibir uma tela com a lista de todos os pokémon, fazendo uso de paginação para a construção da lista;
-- [x] Incluir uma forma de favoritar o pokémon pesquisado;
-- [x] Exibir caracteristicas além das pedidas (Altura);
+- [x] Foi Exibido uma tela com a lista de todos os pokémon, fazendo uso de paginação para a construção da lista;
+- [x] Foi Incluido uma forma de favoritar o pokémon pesquisado;
+- [x] Foi Exibido caracteristicas além das pedidas (Altura);
 
 #### Extra Bônus
 
