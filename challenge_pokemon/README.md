@@ -34,5 +34,5 @@ Foi utilizado a arquitetura MVC, com repositories.
 
 ## Observação
 
-O desenvolvimento foi dividido para Android e iOS com o intuito de preservar o ambiente do usuário em seu sistema operacional.
-Porém, devido a impossibilidade de testes em ambientes iOS (pois, não possuo um mac e um iOS para testes), não consigo afirmar se o layout para iOS está 100% fiel ao [Figma](https://www.figma.com/file/W6jWGGCGz3qhun7TxTrVn4/Teste_pokemon?node-id=13%3A427).
+As views foram divididas para Android e iOS com o intuito de preservar o ambiente do usuário em seu sistema operacional.
+Porém, como há somente um layout (Acredito que deva ser seguido para os dois sistemas operacionais, apesar de me parecer com carecterísticas voltada para o Android), as únicas mudanças inseridas entre Android e iOS foram as transições de tela.
