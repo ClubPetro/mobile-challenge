@@ -27,6 +27,7 @@ Projeto Flutter desenvolvido para testar minhas habilidades, concorrendo a vaga 
 
 - [x] Deploy realizado, link: [Pokémon Challenge ClubPetro]().
 - [x] Screen Splash.
+- [x] Histórico de busca recentes.
 
 ## Sobre a arquitetura utilizada
 
