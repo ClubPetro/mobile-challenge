@@ -25,7 +25,8 @@ Projeto Flutter desenvolvido para testar minhas habilidades, concorrendo a vaga 
 
 #### Extra Bônus
 
-- [x] Deploy realizado, link: [Pokémon Challenge ClubPetro]().
+- [x] Tentativa de Deploy realizado. Porém recusado pela Google por encontrar problemas nas seguintes áreas:
+  - App screenshot. (Era obrigatório ter no minímo duas screenshots, infelizmente eu mandei de todas as telas. Aparentemente a tela inicial contém a imagém escrito "Pokémon" e portanto foi rejeitado. Realizei uma atualização de versão tentando corrigir este possível problema e solicitei análise novamente. Porém como a Google esta demorando muito para realizar estas análises, pode ser que ultrapasse as duas semanas de prazo. Portanto irei realizar a PR e deixar o link, para caso ela aceite. Link: [Desafio ClubPetro](https://play.google.com/store/apps/details?id=com.challange_pokemon.clubpetro)
 - [x] Screen Splash.
 - [x] Histórico de busca recentes.
 
