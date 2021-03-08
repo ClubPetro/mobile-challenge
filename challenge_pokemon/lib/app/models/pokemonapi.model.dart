@@ -24,7 +24,7 @@ class PokemonAPIModel {
     height = json['height'];
     id = json['id'];
     if (json['moves'] != null) {
-      moves = new List<Moves>();
+      moves = <Moves>[];
       json['moves'].forEach((v) {
         moves.add(new Moves.fromJson(v));
       });
@@ -35,13 +35,13 @@ class PokemonAPIModel {
     sprites =
         json['sprites'] != null ? new Sprites.fromJson(json['sprites']) : null;
     if (json['stats'] != null) {
-      stats = new List<Stats>();
+      stats = <Stats>[];
       json['stats'].forEach((v) {
         stats.add(new Stats.fromJson(v));
       });
     }
     if (json['types'] != null) {
-      types = new List<Types>();
+      types = <Types>[];
       json['types'].forEach((v) {
         types.add(new Types.fromJson(v));
       });

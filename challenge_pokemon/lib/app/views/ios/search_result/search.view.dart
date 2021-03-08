@@ -150,7 +150,7 @@ class _SearchViewState extends State<SearchView> {
                             ),
                             SizedBox(
                               height: 25,
-                              child: RaisedButton(
+                              child: ElevatedButton(
                                 onPressed: auxNamePokemon2.isEmpty
                                     ? null
                                     : () async {
@@ -184,8 +184,14 @@ class _SearchViewState extends State<SearchView> {
                                           }
                                         }
                                       },
-                                color: Color(0xFF02005B),
-                                padding: EdgeInsets.all(0.0),
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    Color(0xFF02005B),
+                                  ),
+                                  padding: MaterialStateProperty.all(
+                                    EdgeInsets.all(0.0),
+                                  ),
+                                ),
                                 child: Container(
                                   height: 25,
                                   width: 65,

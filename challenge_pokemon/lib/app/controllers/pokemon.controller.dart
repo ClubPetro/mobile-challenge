@@ -40,14 +40,14 @@ abstract class _PokemonController with Store {
 
   @action
   Future<void> getEvolutions(String url) async {
-    evolucoes = List<String>();
+    evolucoes = <String>[];
     var speciePokemon = await repositoryPokemon.getPokemonSpecie(url);
     var evolutionPokemon = await repositoryPokemon
         .getPokemonEvolutions(speciePokemon.evolutionChain.url);
     evolucoes.add(evolutionPokemon.chain.species.name);
     recursiveEvolution(evolutionPokemon.chain.evolvesTo);
 
-    typeEvolution = List<String>();
+    typeEvolution = <String>[];
     for (int i = 0; i < evolucoes.length; i++) {
       var specificPokemon =
           await repositoryPokemon.getPokemon(evolucoes.elementAt(i));

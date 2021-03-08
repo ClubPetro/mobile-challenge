@@ -24,7 +24,7 @@ class Chain {
 
   Chain.fromJson(Map<String, dynamic> json) {
     if (json['evolves_to'] != null) {
-      evolvesTo = new List<EvolvesTo>();
+      evolvesTo = <EvolvesTo>[];
       json['evolves_to'].forEach((v) {
         evolvesTo.add(new EvolvesTo.fromJson(v));
       });
@@ -53,7 +53,7 @@ class EvolvesTo {
 
   EvolvesTo.fromJson(Map<String, dynamic> json) {
     if (json['evolves_to'] != null) {
-      evolvesTo = new List<EvolvesTo>();
+      evolvesTo = <EvolvesTo>[];
       json['evolves_to'].forEach((v) {
         evolvesTo.add(new EvolvesTo.fromJson(v));
       });

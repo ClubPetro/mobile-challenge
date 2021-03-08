@@ -256,7 +256,7 @@ class _HomeViewState extends State<HomeView> {
                                   0.15 *
                                   0.68,
                             ),
-                            RaisedButton(
+                            ElevatedButton(
                               onPressed: textEditingController.text.isEmpty
                                   ? null
                                   : () async {
@@ -309,9 +309,15 @@ class _HomeViewState extends State<HomeView> {
                                         textEditingController.text = "";
                                       });
                                     },
-                              padding: EdgeInsets.all(0.0),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                ),
+                                padding: MaterialStateProperty.all(
+                                  EdgeInsets.all(0),
+                                ),
                               ),
                               child: Container(
                                 height: 45,
@@ -347,7 +353,7 @@ class _HomeViewState extends State<HomeView> {
                                   0.05 *
                                   0.68,
                             ),
-                            RaisedButton(
+                            ElevatedButton(
                               onPressed: () async {
                                 if (MediaQuery.of(context).viewInsets.bottom !=
                                     0) {
@@ -367,9 +373,15 @@ class _HomeViewState extends State<HomeView> {
                                   textEditingController.text = "";
                                 });
                               },
-                              padding: EdgeInsets.all(0.0),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                ),
+                                padding: MaterialStateProperty.all(
+                                  EdgeInsets.all(0),
+                                ),
                               ),
                               child: Container(
                                 height: 45,
@@ -403,7 +415,7 @@ class _HomeViewState extends State<HomeView> {
                                   0.05 *
                                   0.68,
                             ),
-                            RaisedButton(
+                            ElevatedButton(
                               onPressed: () async {
                                 if (MediaQuery.of(context).viewInsets.bottom !=
                                     0) {
@@ -423,9 +435,15 @@ class _HomeViewState extends State<HomeView> {
                                   textEditingController.text = "";
                                 });
                               },
-                              padding: EdgeInsets.all(0.0),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                ),
+                                padding: MaterialStateProperty.all(
+                                  EdgeInsets.all(0),
+                                ),
                               ),
                               child: Container(
                                 height: 45,
