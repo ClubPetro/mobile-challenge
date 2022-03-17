@@ -37,7 +37,7 @@ class _DetailViewState extends State<DetailView> {
         preferredSize: Size.fromHeight(height * 0.26),
         child: AppBar(
           iconTheme: IconThemeData(
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
           ),
           leading: IconButton(
             padding: EdgeInsets.only(left: 30),
@@ -63,7 +63,7 @@ class _DetailViewState extends State<DetailView> {
                         return Center(
                           child: Icon(
                             Icons.error_outline,
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).colorScheme.secondary,
                             size: 45,
                           ),
                         );
@@ -76,7 +76,7 @@ class _DetailViewState extends State<DetailView> {
                               controller.favorite
                                   ? Icons.star
                                   : Icons.star_border,
-                              color: Theme.of(context).accentColor,
+                              color: Theme.of(context).colorScheme.secondary,
                               size: 45,
                             ),
                             onPressed: () {
@@ -109,7 +109,8 @@ class _DetailViewState extends State<DetailView> {
                                                   'Pokémon Desfavoritado',
                                                   style: TextStyle(
                                                     color: Theme.of(context)
-                                                        .accentColor,
+                                                        .colorScheme
+                                                        .secondary,
                                                     fontWeight: FontWeight.w400,
                                                     fontFamily: "OpenSans",
                                                     fontSize: 14,
@@ -158,7 +159,8 @@ class _DetailViewState extends State<DetailView> {
                                                   'Pokémon Favoritado',
                                                   style: TextStyle(
                                                     color: Theme.of(context)
-                                                        .accentColor,
+                                                        .colorScheme
+                                                        .secondary,
                                                     fontWeight: FontWeight.w400,
                                                     fontFamily: "OpenSans",
                                                     fontSize: 14,
@@ -261,7 +263,7 @@ class _DetailViewState extends State<DetailView> {
                           style: TextStyle(
                             fontFamily: "OpenSans",
                             fontWeight: FontWeight.w700,
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).colorScheme.secondary,
                             fontSize: 18,
                           ),
                         ),
@@ -271,7 +273,7 @@ class _DetailViewState extends State<DetailView> {
                             fontFamily: "OpenSans",
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
-                            color: Theme.of(context).accentColor,
+                            color: Theme.of(context).colorScheme.secondary,
                           ),
                         ),
                       ],

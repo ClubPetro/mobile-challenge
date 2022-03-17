@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:challenge_pokemon/app/models/history.model.dart';
 import 'package:challenge_pokemon/app/repositories/history.repository.dart';
 import 'package:challenge_pokemon/app/views/android/favorite/favorite.view.dart';
@@ -6,7 +5,6 @@ import 'package:challenge_pokemon/app/views/android/list_pokemons/listpokemon.vi
 import 'package:challenge_pokemon/app/views/android/search_result/search.view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -340,7 +338,9 @@ class _HomeViewState extends State<HomeView> {
                                   child: Text(
                                     'PESQUISAR',
                                     style: TextStyle(
-                                      color: Theme.of(context).accentColor,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 14,
                                       fontFamily: 'OpenSans',

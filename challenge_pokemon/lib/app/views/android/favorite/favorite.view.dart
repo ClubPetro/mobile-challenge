@@ -26,7 +26,7 @@ class _FavoriteViewState extends State<FavoriteView> {
             color: Color(0xFF02005B),
           ),
         ),
-        backgroundColor: Theme.of(context).accentColor,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
       body: FutureBuilder(
           future: controller.getPokemonsFavorites(),

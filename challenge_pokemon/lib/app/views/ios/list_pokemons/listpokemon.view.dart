@@ -30,7 +30,7 @@ class _ListPokemonViewState extends State<ListPokemonView> {
               color: Color(0xFF02005B),
             ),
           ),
-          backgroundColor: Theme.of(context).accentColor,
+          backgroundColor: Theme.of(context).colorScheme.secondary,
           flexibleSpace: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +58,7 @@ class _ListPokemonViewState extends State<ListPokemonView> {
                               child: Icon(
                                 Icons.arrow_back,
                                 size: 20.0,
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                               ),
                               padding: EdgeInsets.all(15.0),
                               shape: CircleBorder(),
@@ -71,7 +71,7 @@ class _ListPokemonViewState extends State<ListPokemonView> {
                               child: Icon(
                                 Icons.arrow_back,
                                 size: 20.0,
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                               ),
                               padding: EdgeInsets.all(15.0),
                               shape: CircleBorder(),
@@ -110,7 +110,7 @@ class _ListPokemonViewState extends State<ListPokemonView> {
                               child: Icon(
                                 Icons.arrow_forward,
                                 size: 20.0,
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                               ),
                               padding: EdgeInsets.all(15.0),
                               shape: CircleBorder(),
@@ -123,7 +123,7 @@ class _ListPokemonViewState extends State<ListPokemonView> {
                               child: Icon(
                                 Icons.arrow_forward,
                                 size: 20.0,
-                                color: Theme.of(context).accentColor,
+                                color: Theme.of(context).colorScheme.secondary,
                               ),
                               padding: EdgeInsets.all(15.0),
                               shape: CircleBorder(),

@@ -199,7 +199,9 @@ class _SearchViewState extends State<SearchView> {
                                     child: Text(
                                       'PESQUISAR',
                                       style: TextStyle(
-                                        color: Theme.of(context).accentColor,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondary,
                                         fontWeight: FontWeight.w700,
                                         fontSize: 10,
                                         fontFamily: 'OpenSans',
@@ -240,7 +242,7 @@ class _SearchViewState extends State<SearchView> {
               ),
             ],
           ),
-          backgroundColor: Theme.of(context).accentColor,
+          backgroundColor: Theme.of(context).colorScheme.secondary,
         ),
       ),
       body: Observer(
